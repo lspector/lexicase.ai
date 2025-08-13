@@ -4,7 +4,7 @@ theme: minima
 
 # Site settings
 url: "https://lexicase.github.io"
-baseurl: "/"
+baseurl: ""
 
 # Build settings
 markdown: kramdown

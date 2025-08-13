@@ -1,0 +1,31 @@
+title: Lexicase Project
+description: A GitHub Pages site for the Lexicase project
+theme: minima
+
+# Site settings
+url: "https://nlorant-s.github.io"
+baseurl: "/lexicase.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Navigation
+header_pages:
+  - about.md
+  - docs.md
+
+# Social links (optional)
+github_username: nlorant-s
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore

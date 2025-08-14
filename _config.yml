@@ -4,7 +4,7 @@ theme: minima
 
 # Site settings
 url: "https://nlorant-s.github.io"
-baseurl: "/lexicase.github.io"
+baseurl: "/lexicase.ai"
 
 # Build settings
 markdown: kramdown

@@ -1,51 +1,26 @@
-# Lexicase.ai
+# Lexicase Selection
 
-This repository contains the source code for the Lexicase.ai website, hosted on GitHub Pages.
+A GitHub Pages website providing information about lexicase selection - a parent selection method for evolutionary algorithms and genetic programming.
 
-## About
+🌐 **Live Site:** https://nlorant-s.github.io/lexicase.github.io  
+📦 **Python Package:** https://pypi.org/project/lexicase/
 
-This is a simple markdown-based website that provides information about lexicase selection, a parent selection method used in evolutionary algorithms and genetic programming.
+## What is Lexicase Selection?
 
-## Structure
+Lexicase selection considers performance on individual test cases rather than aggregating fitness across all tests. It helps maintain population diversity and allows specialist solutions to survive.
 
-- `index.md` - Main landing page
-- `about.md` - Information about lexicase selection
-- `docs.md` - Technical documentation
-- `_config.yml` - Jekyll configuration for GitHub Pages
+## Development
 
-## Local Development
+To run locally:
+```bash
+gem install jekyll bundler
+git clone https://github.com/nlorant-s/lexicase.github.io.git
+cd lexicase.github.io
+jekyll serve
+```
 
-To run this site locally:
-
-1. Install Jekyll and dependencies:
-   ```
-   gem install jekyll bundler
-   ```
-
-2. Clone this repository:
-   ```
-   git clone https://github.com/nlorant-s/lexicase.github.io.git
-   cd lexicase.github.io
-   ```
-
-3. Run the site:
-   ```
-   jekyll serve
-   ```
-
-4. Visit `http://localhost:4000` in your browser
-
-## Deployment
-
-This site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The live site is available at: https://nlorant-s.github.io/lexicase.github.io
-
-## Contributing
-
-1. Fork this repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+Visit `http://localhost:4000` to view the site.
 
 ## License
 
-This project is open source and available under the MIT License.
+MIT License

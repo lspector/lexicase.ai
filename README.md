@@ -1,6 +1,6 @@
-# Lexicase GitHub Pages Site
+# Lexicase.ai
 
-This repository contains the source code for the Lexicase project website, hosted on GitHub Pages.
+This repository contains the source code for the Lexicase.ai website, hosted on GitHub Pages.
 
 ## About
 

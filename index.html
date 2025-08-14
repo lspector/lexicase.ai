@@ -3,32 +3,153 @@ layout: default
 ---
 
 <div class="home">
-  <h1>Welcome to Lexicase</h1>
+  <h1>Lexicase Selection</h1>
   
-  <p>Welcome to the Lexicase project website! This is a simple GitHub Pages site built with Jekyll and Markdown.</p>
+  <p>Lexicase selection is a parent selection method for evolutionary algorithms that was first introduced for genetic programming. Unlike traditional selection methods that aggregate fitness across all test cases, lexicase selection considers performance on individual test cases.</p>
 
-  <h2>About</h2>
-  <p>Lexicase is a selection method commonly used in genetic programming and evolutionary computation. This website serves as a resource for information about lexicase selection.</p>
+  <p>📦 <strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
-  <h2>Features</h2>
+  <h2>How It Works</h2>
+  <ol>
+    <li><strong>Random Ordering</strong>: For each selection event, the test cases are randomly shuffled</li>
+    <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each test case in order</li>
+    <li><strong>Best Performance</strong>: Only individuals with the best performance on the current test case advance</li>
+    <li><strong>Final Selection</strong>: The process continues until one individual remains or all test cases are considered</li>
+  </ol>
+
+  <h2>Advantages</h2>
   <ul>
-    <li><strong>Simple and Clean</strong>: Built with Jekyll for easy maintenance</li>
-    <li><strong>GitHub Pages</strong>: Hosted directly from this repository</li>
-    <li><strong>Responsive</strong>: Works well on desktop and mobile devices</li>
+    <li><strong>Diversity Maintenance</strong>: Helps maintain population diversity by considering different aspects of fitness</li>
+    <li><strong>Specialist Solutions</strong>: Allows specialists that excel on particular test cases to survive</li>
+    <li><strong>No Aggregation</strong>: Avoids the need to combine multiple objectives into a single fitness value</li>
   </ul>
 
-  <h2>Getting Started</h2>
-  <p>This site is automatically built and deployed using GitHub Pages. Any changes to the markdown files in this repository will be reflected on the live site.</p>
-
-  <h2>Navigation</h2>
+  <h2>Applications</h2>
+  <p>Lexicase selection has been successfully applied to:</p>
   <ul>
-    <li><a href="{{ '/' | relative_url }}">Home</a> - This page</li>
-    <li><a href="{{ '/about' | relative_url }}">About</a> - More information about the project</li>
-    <li><a href="{{ '/docs' | relative_url }}">Documentation</a> - Technical documentation</li>
+    <li>Genetic programming</li>
+    <li>Program synthesis</li>
+    <li>Multi-objective optimization</li>
+    <li>Automatic programming</li>
+    <li>Software debugging</li>
   </ul>
 
-  <h2>Contact</h2>
-  <p>For questions or contributions, please visit our <a href="https://github.com/nlorant-s/lexicase.github.io">GitHub repository</a>.</p>
+  <h2>Algorithm Pseudocode</h2>
+  <pre><code>function lexicase_selection(population, test_cases):
+    shuffle(test_cases)  // Random ordering of test cases
+    candidates = copy(population)
+    
+    for each test_case in test_cases:
+        if length(candidates) <= 1:
+            break
+            
+        best_performance = find_best_performance(candidates, test_case)
+        candidates = filter_by_performance(candidates, test_case, best_performance)
+    
+    return random_choice(candidates)</code></pre>
+
+  <h2>Implementation Notes</h2>
+  
+  <h3>Performance Evaluation</h3>
+  <ul>
+    <li>Each individual must be evaluated on all test cases</li>
+    <li>Performance can be measured as fitness, error, or any other metric</li>
+    <li>Lower values typically indicate better performance (minimization)</li>
+  </ul>
+
+  <h3>Test Case Management</h3>
+  <ul>
+    <li>Test cases should be diverse and representative</li>
+    <li>The number of test cases affects selection pressure</li>
+    <li>Dynamic test case generation can be beneficial</li>
+  </ul>
+
+  <h2>Variants</h2>
+  
+  <h3>Epsilon Lexicase</h3>
+  <p>Allows individuals within an epsilon threshold to be considered equivalent:</p>
+  <pre><code>best_performance = find_best_performance(candidates, test_case)
+threshold = best_performance + epsilon
+candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
+
+  <h3>Down-sampled Lexicase</h3>
+  <p>Uses a subset of test cases for each selection event to reduce computational cost.</p>
+
+  <h2>Parameters</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+        <th>Typical Values</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Population Size</td>
+        <td>Number of individuals</td>
+        <td>100-1000</td>
+      </tr>
+      <tr>
+        <td>Test Cases</td>
+        <td>Number of evaluation cases</td>
+        <td>10-100+</td>
+      </tr>
+      <tr>
+        <td>Epsilon</td>
+        <td>Tolerance threshold</td>
+        <td>0.0-1.0</td>
+      </tr>
+      <tr>
+        <td>Sample Rate</td>
+        <td>Fraction of test cases used</td>
+        <td>0.1-1.0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Performance Considerations</h2>
+  <ul>
+    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of test cases</li>
+    <li><strong>Memory</strong>: Requires storing performance on all test cases</li>
+    <li><strong>Parallelization</strong>: Test case evaluation can be parallelized</li>
+  </ul>
+
+  <h2>Example Use Cases</h2>
+  
+  <h3>Program Synthesis</h3>
+  <pre><code># Test cases for sorting function
+test_cases = [
+    ([3, 1, 4], [1, 3, 4]),
+    ([5, 2], [2, 5]),
+    ([], []),
+    ([1], [1])
+]</code></pre>
+
+  <h3>Symbolic Regression</h3>
+  <pre><code># Test cases for mathematical function
+test_cases = [
+    (x=0, expected=1),
+    (x=1, expected=2),
+    (x=2, expected=5),
+    (x=3, expected=10)
+]</code></pre>
+
+  <h2>Research</h2>
+  <p>This selection method has been the subject of extensive research in the evolutionary computation community. It has shown particular promise in domains where maintaining diversity is crucial for finding high-quality solutions.</p>
+
+  <h2>References</h2>
+  <ul>
+    <li>Spector, L. (2012). Assessment of problem modality by differential performance of lexicase selection in genetic programming</li>
+    <li>Helmuth, T., Spector, L., & Matheson, J. (2015). Solving uncompromising problems with lexicase selection</li>
+    <li>La Cava, W., Spector, L., & Danai, K. (2016). Epsilon-lexicase selection for regression</li>
+  </ul>
+
+  <h2>Resources</h2>
+  <ul>
+    <li><a href="https://pypi.org/project/lexicase/">Python Package on PyPI</a></li>
+    <li><a href="https://github.com/nlorant-s/lexicase.github.io">GitHub Repository</a></li>
+  </ul>
 
   <hr>
   <p><em>Last updated: August 2025</em></p>

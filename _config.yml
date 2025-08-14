@@ -3,8 +3,8 @@ description: A GitHub Pages site for the Lexicase project
 theme: minima
 
 # Site settings
-url: "https://lexicase.github.io"
-baseurl: ""
+url: "https://nlorant-s.github.io"
+baseurl: "/lexicase.github.io"
 
 # Build settings
 markdown: kramdown

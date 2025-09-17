@@ -10,7 +10,7 @@ layout: default
   <p><strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
   <h2>How It Works</h2>
-  <p><em>The following describes vanilla lexicase selection. See <a href="#variants">Variants</a> for modified versions.</em></p>
+  <p><em>The following describes vanilla lexicase selection. See <a href="#variants">variants</a> for modified versions.</em></p>
   <ol>
     <li><strong>Random Ordering</strong>: For each selection event, the training cases are randomly shuffled</li>
     <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each training case in order</li>
@@ -73,7 +73,7 @@ layout: default
 threshold = best_performance + epsilon
 candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
 
-  <p>In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</p>
+  <p><em>Note: In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</em></p>
 
   <h3>Down-sampled Lexicase</h3>
   <p>Uses a subset of test cases for each selection event to reduce computational cost.</p>
@@ -155,13 +155,13 @@ test_cases = [
     <li>Hernandez, J. G., A. Lalejini, E. Dolson, and C. Ofria (2019). Random subsampling improves performance in lexicase selection. GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference Companion, pp. 2028 - 2031.</li>
     <li>Ni, A., Ding, L., & Spector, L. (2024, March). Dalex: Lexicase-like selection via diverse aggregation. In European Conference on Genetic Programming (Part of EvoStar) (pp. 90-107).</li>
     <li>Ding, L., Pantridge, E., & Spector, L. (2023, July). Probabilistic lexicase selection. In Proceedings of the genetic and evolutionary computation conference (pp. 1073-1081).</li>
-    <li>See also: <a href="https://scholar.google.com/scholar?hl=en&q=lexicase+selection">lexicase selection on Google Scholar</a>.</li>
+    <li><em>See also: <a href="https://scholar.google.com/scholar?hl=en&q=lexicase+selection">Lexicase Selection on Google Scholar</a>.</em></li>
   </ul>
 
   <h2>Resources</h2>
   <ul>
     <li><a href="https://pypi.org/project/lexicase/">Python Package on PyPI</a></li>
-    <li><a href="https://github.com/nlorant-s/lexicase.github.io">GitHub Repository</a></li>
+    <li><a href="https://github.com/nlorant-s/lexicase.github.io">GitHub Repository for Lexicase Documentation</a></li>
   </ul>
 
   <hr>

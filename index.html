@@ -10,8 +10,7 @@ layout: default
   <p><strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
   <h2>How It Works</h2>
-  <!-- <h3>This is Vanilla Lexicase</h3>
-  <p>If floating, see Epsilon Lexicase aka theres more to know</p> -->
+  <p><em>The following describes vanilla lexicase selection. See <a href="#variants">Variants</a> for modified versions.</em></p>
   <ol>
     <li><strong>Random Ordering</strong>: For each selection event, the training cases are randomly shuffled</li>
     <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each training case in order</li>
@@ -21,9 +20,9 @@ layout: default
 
   <h2>Advantages</h2>
   <ul>
-    <li><strong>Diversity Maintenance</strong>: Helps maintain population diversity by considering different aspects of solution quality</li>
-    <li><strong>Specialist Solutions</strong>: Allows specialists that excel on particular training cases to survive</li>
-    <li><strong>No Aggregation</strong>: Avoids the need to combine multiple objectives into a single quality measure</li>
+    <li><strong>Avoids averaging traps</strong>: Non-aggregating selection prevents getting stuck in local optima caused by balancing mediocre performance across test cases, enabling richer exploration of the solution space</li>
+    <li><strong>Preserves diversity and specialists</strong>: Random ordering of test cases combined with non-aggregation allows specialized solutions to survive and reproduce based on excellence in specific areas, maintaining population diversity</li>
+    <li><strong>Handles multidimensional problems naturally</strong>: Eliminates the need to weight competing objectives or collapse multiple criteria into a single fitness score</li>
   </ul>
 
   <h2>Applications</h2>
@@ -66,24 +65,24 @@ layout: default
     <li>Dynamic test case generation can be beneficial</li>
   </ul>
 
-  <h2>Variants</h2>
+  <h2 id="variants">Variants</h2>
   
   <h3>Epsilon Lexicase</h3>
-  <p>Allows individuals within an epsilon threshold to be considered equivalent:</p>
+  <p>Designed specifically for continuous-valued errors (while standard lexicase is best suited for combinatorial problems like binary and integer domains), epsilon lexicase allows individuals within an epsilon threshold to be considered equivalent:</p>
   <pre><code>best_performance = find_best_performance(candidates, test_case)
 threshold = best_performance + epsilon
 candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
 
-<!-- <h3>DALex</h3>
-<h3>Plexicase</h3> -->
-
-<!-- if you have continous value errors, this is what you want to Use
-default for combinatorial problems (binary, integer)
-epsilon can be set automatically during evolution (or statement)
-simplest and best (in most cases): epsilon set automatically once per gen for each case based on () medians of absolute values of deviation (add paragraph). -->
+  <p>In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</p>
 
   <h3>Down-sampled Lexicase</h3>
   <p>Uses a subset of test cases for each selection event to reduce computational cost.</p>
+
+  <h3>DALex (Diverse Aggregation Lexicase)</h3>
+  <p>DALex combines aspects of lexicase selection with diverse aggregation methods. Instead of using a single random ordering of test cases, DALex uses multiple diverse aggregation functions to evaluate candidates, maintaining the benefits of lexicase while incorporating aggregation diversity.</p>
+
+  <h3>Plexicase (Probabilistic Lexicase)</h3>
+  <p>Plexicase introduces probabilistic elements to lexicase selection, allowing for more flexible selection behavior while maintaining the core principles of case-by-case evaluation. This variant can help balance exploration and exploitation in the selection process.</p>
 
   <h2>Parameters</h2>
   <table>
@@ -154,6 +153,9 @@ test_cases = [
     <li>Helmuth, T., L. Spector, and J. Matheson. (2014). Solving Uncompromising Problems with Lexicase Selection. In IEEE Transactions on Evolutionary Computation, vol. 19, no. 5, pp. 630 - 643.</li>
     <li>La Cava, W., L. Spector, and K. Danai (2016). Epsilon-lexicase selection for regression. GECCO '16: Proceedings of the Genetic and Evolutionary Computation Conference, pp. 741 - 748.</li>
     <li>Hernandez, J. G., A. Lalejini, E. Dolson, and C. Ofria (2019). Random subsampling improves performance in lexicase selection. GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference Companion, pp. 2028 - 2031.</li>
+    <li>Ni, A., Ding, L., & Spector, L. (2024, March). Dalex: Lexicase-like selection via diverse aggregation. In European Conference on Genetic Programming (Part of EvoStar) (pp. 90-107).</li>
+    <li>Ding, L., Pantridge, E., & Spector, L. (2023, July). Probabilistic lexicase selection. In Proceedings of the genetic and evolutionary computation conference (pp. 1073-1081).</li>
+    <li>See also: <a href="https://scholar.google.com/scholar?hl=en&q=lexicase+selection">lexicase selection on Google Scholar</a>.</li>
   </ul>
 
   <h2>Resources</h2>
@@ -163,5 +165,5 @@ test_cases = [
   </ul>
 
   <hr>
-  <p><em>Last updated: August 2025</em></p>
+  <p><em>Last updated: September 2025</em></p>
 </div>

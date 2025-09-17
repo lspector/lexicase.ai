@@ -3,8 +3,8 @@ description: lexicase.ai
 theme: minima
 
 # Site settings
-url: "https://nlorant-s.github.io"
-baseurl: "/lexicase.ai"
+url: "https://lexicase.ai"
+baseurl: ""
 
 # Build settings
 markdown: kramdown

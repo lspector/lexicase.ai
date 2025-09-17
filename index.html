@@ -10,18 +10,20 @@ layout: default
   <p><strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
   <h2>How It Works</h2>
+  <!-- <h3>This is Vanilla Lexicase</h3>
+  <p>If floating, see Epsilon Lexicase aka theres more to know</p> -->
   <ol>
-    <li><strong>Random Ordering</strong>: For each selection event, the test cases are randomly shuffled</li>
-    <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each test case in order</li>
-    <li><strong>Best Performance</strong>: Only individuals with the best performance on the current test case advance</li>
-    <li><strong>Final Selection</strong>: The process continues until one individual remains or all test cases are considered</li>
+    <li><strong>Random Ordering</strong>: For each selection event, the training cases are randomly shuffled</li>
+    <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each training case in order</li>
+    <li><strong>Best Performance</strong>: Only individuals with the best performance on the current training case advance</li>
+    <li><strong>Final Selection</strong>: The process continues until one individual remains or all training cases are considered</li>
   </ol>
 
   <h2>Advantages</h2>
   <ul>
-    <li><strong>Diversity Maintenance</strong>: Helps maintain population diversity by considering different aspects of fitness</li>
-    <li><strong>Specialist Solutions</strong>: Allows specialists that excel on particular test cases to survive</li>
-    <li><strong>No Aggregation</strong>: Avoids the need to combine multiple objectives into a single fitness value</li>
+    <li><strong>Diversity Maintenance</strong>: Helps maintain population diversity by considering different aspects of solution quality</li>
+    <li><strong>Specialist Solutions</strong>: Allows specialists that excel on particular training cases to survive</li>
+    <li><strong>No Aggregation</strong>: Avoids the need to combine multiple objectives into a single quality measure</li>
   </ul>
 
   <h2>Applications</h2>
@@ -71,6 +73,14 @@ layout: default
   <pre><code>best_performance = find_best_performance(candidates, test_case)
 threshold = best_performance + epsilon
 candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
+
+<!-- <h3>DALex</h3>
+<h3>Plexicase</h3> -->
+
+<!-- if you have continous value errors, this is what you want to Use
+default for combinatorial problems (binary, integer)
+epsilon can be set automatically during evolution (or statement)
+simplest and best (in most cases): epsilon set automatically once per gen for each case based on () medians of absolute values of deviation (add paragraph). -->
 
   <h3>Down-sampled Lexicase</h3>
   <p>Uses a subset of test cases for each selection event to reduce computational cost.</p>

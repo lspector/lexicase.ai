@@ -69,7 +69,7 @@ layout: default
   <h2 id="variants">Variants</h2>
   
   <h3>Epsilon Lexicase</h3>
-  <p>Designed specifically for continuous-valued errors (while standard lexicase is best suited for combinatorial problems like binary and integer domains), epsilon lexicase allows individuals within an epsilon threshold to be considered equivalent:</p>
+  <p>Designed specifically for continuous-valued errors (while standard lexicase is best suited for combinatorial problems in discrete domains, for example with Boolean or integer errors), epsilon lexicase allows individuals within an epsilon threshold to be considered equivalent:</p>
   <pre><code>best_performance = find_best_performance(candidates, training_case)
 threshold = best_performance + epsilon
 candidates = filter_by_threshold(candidates, training_case, threshold)</code></pre>
@@ -80,7 +80,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <p>Uses a subset of training cases for each selection event to reduce computational cost.</p>
 
   <h3>DALex (Diversely Aggregated Lexicase)</h3>
-  <p>In DALex, training cases <i>are</i> aggregated, but after randomized weighting. When weight differences are large, the behavior approaches that of ordinary lexicase selection. This permits significant efficiency improvements and provides a "particularity pressure" hyperparameter that can be adjusted to optimize performance in some environments.</p> 
+  <p>In DALex, training cases <i><b></b>are</b></i> aggregated, but only after randomized weighting. When weight differences are large, DALex's behavior approaches that of ordinary lexicase selection. This permits significant efficiency improvements and provides a "particularity pressure" hyperparameter that can be adjusted for better performance in some environments.</p> 
   <!--- <p>DALex combines aspects of lexicase selection with diverse aggregation methods. Instead of using a single random ordering of training cases, DALex uses multiple diverse aggregation functions to evaluate candidates, maintaining the benefits of lexicase while incorporating aggregation diversity.</p> --->
 
   <h3>Plexicase (Probabilistic Lexicase)</h3>
@@ -174,6 +174,7 @@ training_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

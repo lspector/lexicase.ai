@@ -119,7 +119,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
 
   <h2>Performance Considerations</h2>
   <ul>
-    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases</li>
+    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases, <a href="https://arxiv.org/abs/2204.06461">although empirically much better</a></li>
     <li><strong>Memory</strong>: Requires storing performance on all training cases</li>
     <li><strong>Parallelization</strong>: Training case evaluation can be parallelized</li>
   </ul>
@@ -171,6 +171,7 @@ training_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

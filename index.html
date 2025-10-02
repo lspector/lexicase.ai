@@ -20,8 +20,8 @@ layout: default
 
   <h2>Advantages</h2>
   <ul>
-    <li><strong>Avoids averaging traps</strong>: Non-aggregating selection prevents getting stuck in local optima caused by balancing mediocre performance across test cases, enabling richer exploration of the solution space</li>
-    <li><strong>Preserves diversity and specialists</strong>: Random ordering of test cases combined with non-aggregation allows specialized solutions to survive and reproduce based on excellence in specific areas, maintaining population diversity</li>
+    <li><strong>Avoids averaging traps</strong>: Non-aggregating selection prevents getting stuck in local optima caused by balancing mediocre performance across training cases, enabling richer exploration of the solution space</li>
+    <li><strong>Preserves diversity and specialists</strong>: Random ordering of training cases combined with non-aggregation allows specialized solutions to survive and reproduce based on excellence in specific areas, maintaining population diversity</li>
     <li><strong>Handles multidimensional problems naturally</strong>: Eliminates the need to weight competing objectives or collapse multiple criteria into a single fitness score</li>
   </ul>
 
@@ -36,16 +36,16 @@ layout: default
   </ul>
 
   <h2>Algorithm Pseudocode</h2>
-  <pre><code>function lexicase_selection(population, test_cases):
-    shuffle(test_cases)  // Random ordering of test cases
+  <pre><code>function lexicase_selection(population, training_cases):
+    shuffle(training_cases)  // Random ordering of training cases
     candidates = copy(population)
     
-    for each test_case in test_cases:
+    for each training_case in training_cases:
         if length(candidates) <= 1:
             break
             
-        best_performance = find_best_performance(candidates, test_case)
-        candidates = filter_by_performance(candidates, test_case, best_performance)
+        best_performance = find_best_performance(candidates, training_case)
+        candidates = filter_by_performance(candidates, training_case, best_performance)
     
     return random_choice(candidates)</code></pre>
 
@@ -53,30 +53,30 @@ layout: default
   
   <h3>Performance Evaluation</h3>
   <ul>
-    <li>Each individual must be evaluated on all test cases</li>
+    <li>Each individual must be evaluated on all training cases</li>
     <li>Performance can be measured as fitness, error, or any other metric</li>
     <li>Lower values typically indicate better performance (minimization)</li>
   </ul>
 
-  <h3>Test Case Management</h3>
+  <h3>Training Case Management</h3>
   <ul>
-    <li>Test cases should be diverse and representative</li>
-    <li>The number of test cases affects selection pressure</li>
-    <li>Dynamic test case generation can be beneficial</li>
+    <li>Training cases should be diverse and representative</li>
+    <li>The number of training cases affects selection pressure</li>
+    <li>Dynamic training case generation can be beneficial</li>
   </ul>
 
   <h2 id="variants">Variants</h2>
   
   <h3>Epsilon Lexicase</h3>
   <p>Designed specifically for continuous-valued errors (while standard lexicase is best suited for combinatorial problems like binary and integer domains), epsilon lexicase allows individuals within an epsilon threshold to be considered equivalent:</p>
-  <pre><code>best_performance = find_best_performance(candidates, test_case)
+  <pre><code>best_performance = find_best_performance(candidates, training_case)
 threshold = best_performance + epsilon
-candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
+candidates = filter_by_threshold(candidates, training_case, threshold)</code></pre>
 
   <p><em>Note: In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</em></p>
 
   <h3>Down-sampled Lexicase</h3>
-  <p>Uses a subset of test cases for each selection event to reduce computational cost.</p>
+  <p>Uses a subset of training cases for each selection event to reduce computational cost.</p>
 
   <h3>DALex (Diverse Aggregation Lexicase)</h3>
   <p>DALex combines aspects of lexicase selection with diverse aggregation methods. Instead of using a single random ordering of test cases, DALex uses multiple diverse aggregation functions to evaluate candidates, maintaining the benefits of lexicase while incorporating aggregation diversity.</p>
@@ -100,7 +100,7 @@ candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
         <td>100-1000</td>
       </tr>
       <tr>
-        <td>Test Cases</td>
+        <td>Training Cases</td>
         <td>Number of evaluation cases</td>
         <td>10-100+</td>
       </tr>
@@ -111,7 +111,7 @@ candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
       </tr>
       <tr>
         <td>Sample Rate</td>
-        <td>Fraction of test cases used</td>
+        <td>Fraction of training cases used</td>
         <td>0.1-1.0</td>
       </tr>
     </tbody>
@@ -119,16 +119,16 @@ candidates = filter_by_threshold(candidates, test_case, threshold)</code></pre>
 
   <h2>Performance Considerations</h2>
   <ul>
-    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of test cases</li>
-    <li><strong>Memory</strong>: Requires storing performance on all test cases</li>
-    <li><strong>Parallelization</strong>: Test case evaluation can be parallelized</li>
+    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases</li>
+    <li><strong>Memory</strong>: Requires storing performance on all training cases</li>
+    <li><strong>Parallelization</strong>: Training case evaluation can be parallelized</li>
   </ul>
 
   <h2>Example Use Cases</h2>
   
   <h3>Program Synthesis</h3>
-  <pre><code># Test cases for sorting function
-test_cases = [
+  <pre><code># Training cases for sorting function
+training_cases = [
     ([3, 1, 4], [1, 3, 4]),
     ([5, 2], [2, 5]),
     ([], []),
@@ -136,8 +136,8 @@ test_cases = [
 ]</code></pre>
 
   <h3>Symbolic Regression</h3>
-  <pre><code># Test cases for mathematical function
-test_cases = [
+  <pre><code># Training cases for mathematical function
+training_cases = [
     (x=0, expected=1),
     (x=1, expected=2),
     (x=2, expected=5),
@@ -168,6 +168,7 @@ test_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

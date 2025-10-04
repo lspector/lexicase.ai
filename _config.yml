@@ -1,5 +1,5 @@
-title: Lexicase Selection Documentation
-description: lexicase.ai
+# title: Lexicase Selection Documentation
+# description: lexicase.ai
 theme: minima
 
 # Site settings
@@ -26,3 +26,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - .gitignore
+

@@ -84,7 +84,9 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <!--- <p>DALex combines aspects of lexicase selection with diverse aggregation methods. Instead of using a single random ordering of training cases, DALex uses multiple diverse aggregation functions to evaluate candidates, maintaining the benefits of lexicase while incorporating aggregation diversity.</p> --->
 
   <h3>Plexicase (Probabilistic Lexicase)</h3>
-  <p>Plexicase introduces probabilistic elements to lexicase selection, allowing for more flexible selection behavior while maintaining the core principles of case-by-case evaluation. This variant can help balance exploration and exploitation in the selection process.</p>
+  <p>Approximates the selection probabilities for each individual under lexicase selection, and then samples from that distributuion instead of performing lexicase selection's repeated filtering steps.
+    Behaves similarly to lexicase selection but is significantly more efficient. Also allows for adjustment of the kurtosis of the distribution, which can be beneficial in some problem environments.
+  <!--- <p>Plexicase introduces probabilistic elements to lexicase selection, allowing for more flexible selection behavior while maintaining the core principles of case-by-case evaluation. This variant can help balance exploration and exploitation in the selection process.</p> --->
 
   <h2>Parameters</h2>
   <table>
@@ -121,7 +123,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
 
   <h2>Performance Considerations</h2>
   <ul>
-    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases, <a href="https://arxiv.org/abs/2204.06461">although empirically it is generally much better</a></li>
+    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases, <a href="https://arxiv.org/abs/2204.06461">although empirically it is generally much better</a> (and see also DALex and Plexicase selection for other high performance options)</li>
     <li><strong>Memory</strong>: Requires storing performance on all training cases</li>
     <li><strong>Parallelization</strong>: Training case evaluation can be parallelized</li>
   </ul>
@@ -176,6 +178,7 @@ training_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

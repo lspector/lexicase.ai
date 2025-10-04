@@ -33,6 +33,7 @@ layout: default
     <li>Deep learning (using gradient lexicase selection)</li>
     <li>Multi-objective optimization</li>
     <li>Reinforcement learning</li>
+    <li>Learning classifier systems</li>
   </ul>
 
   <h2>Algorithm Pseudocode</h2>
@@ -75,6 +76,9 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <h3>Gradient Lexicase</h3>
   <p>Integrates lexicase selection into deep learning by simultaneously performing gradient descent on several copies of the model, each trained with respect to a different subset of the training data, and then performing lexicase selection to determine which model to carry forward to the next learning epoch.</p>
 
+  <h3> Batch Lexicase</h3>
+  Aggregates errors within randomly-chosen batches of training cases, and then treats the batches as individual training cases for lexicase selection. May be useful for noisy training data.
+  
   <h2>Time Complexity</h2>
   The time complexity of ordinary lexicase selection is <i>O(n × m)</i> where <i>n</i> is population size and <i>m</i> is number of training cases.
   However, the empirically observed runtimes are generally significantly better than this basic complexity analysis
@@ -82,10 +86,11 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   
   <h2>References</h2>
   <ul>
-    <li>Spector, L. (2012). Assessment of Problem Modality by Differential Performance of Lexicase Selection in Genetic Programming: A Preliminary Report. In <i>Companion Publication of the 2012 Genetic and Evolutionary Computation Conference, GECCO’12 Companion</i>. ACM Press. pp. 401-408.</li>
+    <li>Spector, L. (2012). Assessment of Problem Modality by Differential Performance of Lexicase Selection in Genetic Programming: A Preliminary Report. In <i>Companion Publication of the 2012 Genetic and Evolutionary Computation Conference, GECCO’12 Companion</i>, pp. 401-408.</li>
     <li>Helmuth, T., L. Spector, and J. Matheson. (2014). Solving Uncompromising Problems with Lexicase Selection. In <i>IEEE Transactions on Evolutionary Computation</i>, vol. 19, no. 5, pp. 630-643.</li>
     <li>La Cava, W., L. Spector, and K. Danai (2016). Epsilon-lexicase selection for regression. <i>GECCO '16: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 741-748.</li>
     <li>Hernandez, J. G., A. Lalejini, E. Dolson, and C. Ofria (2019). Random subsampling improves performance in lexicase selection. <i>GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference Companion</i>, pp. 2028-2031.</li>
+    <li>Aenugu, S., & Spector, L. (2019). Lexicase selection in learning classifier systems. In <i>GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 356–364.</li>
     <li>Ding, L., & Spector, L. (2022). Optimizing Neural Networks with Gradient Lexicase Selection. In The Tenth International Conference on Learning Representations, ICLR 2022.</li>
     <li>Helmuth, T., Lengler, J., & La Cava, W. (2022). Population Diversity Leads to Short Running Times of Lexicase Selection. In <i>Parallel Problem Solving from Nature – PPSN XVII: 17th International Conference, PPSN 2022</i>, pp. 485-498.</li>
     <li>Ding, L., Pantridge, E., & Spector, L. (2023). Probabilistic lexicase selection. In <i>GECCO '23: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 1073-1081.</li>
@@ -98,12 +103,13 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <ul>
     <li><a href="https://www.youtube.com/watch?v=Th6Hx3SJOlk">Lexicase selection tutorial by Tom Helmuth and Bill La Cava from GECCO '21</a></li>
     <li><a href="https://pypi.org/project/lexicase/">Python Package on PyPI</a></li>
-    <li><a href="https://github.com/nlorant-s/lexicase.github.io">GitHub Repository for Lexicase Documentation</a></li>
+    <!--- <li><a href="https://github.com/nlorant-s/lexicase.github.io">GitHub Repository for Lexicase Documentation</a></li> --->
   </ul>
 
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

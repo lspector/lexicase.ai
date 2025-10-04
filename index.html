@@ -10,7 +10,7 @@ layout: default
   <p><strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
   <h2>How It Works</h2>
-  <p><em>The following describes vanilla lexicase selection. See <a href="#variants">variants</a> for modified versions.</em></p>
+  <p><em>The following describes ordinary lexicase selection method. See <a href="#variants">variants</a> for modified versions.</em></p>
   <ol>
     <li><strong>Random Ordering</strong>: For each selection event, the training cases are randomly shuffled</li>
     <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each training case in order</li>
@@ -48,24 +48,6 @@ layout: default
     
     return random_choice(candidates)</code></pre>
 
-  <h2>Implementation Notes</h2>
-  
-  <h3>Performance Evaluation</h3>
-  <ul>
-    <li>Each individual must be evaluated on all training cases</li>
-    <li>Performance can be measured as fitness, error, or any other metric</li>
-    <li>Lower values typically indicate better performance (minimization)</li>
-  </ul>
-
-  <!---
-  <h3>Training Case Management</h3>
-  <ul>
-    <li>Training cases should ideally be diverse and representative</li>
-    <li>The number of training cases affects selection pressure</li>
-    <li>Dynamic training case generation can be beneficial</li>
-  </ul>
-  --->
-
   <h2 id="variants">Variants</h2>
   
   <h3>Epsilon Lexicase</h3>
@@ -92,74 +74,10 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <h3>Gradient Lexicase Selection</h3>
   <p>Integrates lexicase selection into deep learning by simultaneously performing gradient descent on several copies of the model, each trained with respect to a different subset of the training data, and then performing lexicase selection to determine which model to carry forward to the next learning epoch.</p>
 
-    
-  <h2>Parameters</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-        <th>Typical Values</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Population Size</td>
-        <td>Number of individuals</td>
-        <td>100-1000</td>
-      </tr>
-      <tr>
-        <td>Training Cases</td>
-        <td>Number of evaluation cases</td>
-        <td>10-100+</td>
-      </tr>
-      <tr>
-        <td>Epsilon</td>
-        <td>Tolerance threshold</td>
-        <td>0.0-1.0</td>
-      </tr>
-      <tr>
-        <td>Sample Rate</td>
-        <td>Fraction of training cases used</td>
-        <td>0.1-1.0</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Performance Considerations</h2>
-  <ul>
-    <li><strong>Time Complexity</strong>: O(n × m) where n is population size and m is number of training cases, <a href="https://arxiv.org/abs/2204.06461">although empirically it is generally much better</a> (and see also DALex and Plexicase for other high performance options)</li>
-    <li><strong>Memory</strong>: Requires storing performance on all training cases</li>
-    <li><strong>Parallelization</strong>: Training case evaluation can be parallelized</li>
-  </ul>
-
- <!---
-  
-  <h2>Example Use Cases</h2>
-  
-  <h3>Program Synthesis</h3>
-  <pre><code># Training cases for sorting function
-training_cases = [
-    ([3, 1, 4], [1, 3, 4]),
-    ([5, 2], [2, 5]),
-    ([], []),
-    ([1], [1])
-]</code></pre>
-
-  <h3>Symbolic Regression</h3>
-  <pre><code># Training cases for mathematical function
-training_cases = [
-    (x=0, expected=1),
-    (x=1, expected=2),
-    (x=2, expected=5),
-    (x=3, expected=10)
-]</code></pre>
---->
-
-  <!---
-  <h2>Research</h2>
-  <p>This selection method has been the subject of extensive research in the evolutionary computation community. It has shown particular promise in domains where maintaining diversity is crucial for finding high-quality solutions.</p>
-  --->
+  <h2>Time Complexity</h2>
+  The time complexity of ordinary lexicase selection is O(n × m) where n is population size and m is number of training cases.
+  However, the empirically observed runtimes are generally significantly better than this basic complexity analysis
+  would lead one to expect. Explanations for this better-than-expected performance are explored in <a href="https://arxiv.org/abs/2204.06461">this paper</a>. DALex and Plexicase provide otherhigh performance options.
   
   <h2>References</h2>
   <ul>
@@ -183,6 +101,7 @@ training_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

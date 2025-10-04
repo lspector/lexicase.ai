@@ -77,7 +77,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <p>Integrates lexicase selection into deep learning by simultaneously performing gradient descent on several copies of the model, each trained with respect to a different subset of the training data, and then performing lexicase selection to determine which model to carry forward to the next learning epoch.</p>
 
   <h3> Batch Lexicase</h3>
-  Aggregates errors within randomly-chosen batches of training cases, and then treats the batches as individual training cases for lexicase selection. May be useful for noisy training data.
+  <p>Aggregates errors within randomly-chosen batches of training cases, and then treats the batches as individual training cases for lexicase selection. May be useful for noisy training data.</p>
   
   <h2>Time Complexity</h2>
   The time complexity of ordinary lexicase selection is <i>O(n × m)</i> where <i>n</i> is population size and <i>m</i> is number of training cases.
@@ -109,6 +109,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

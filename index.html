@@ -71,13 +71,13 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   
   <!--- <p>Plexicase introduces probabilistic elements to lexicase selection, allowing for more flexible selection behavior while maintaining the core principles of case-by-case evaluation. This variant can help balance exploration and exploitation in the selection process.</p> --->
 
-  <h3>Gradient Lexicase Selection</h3>
+  <h3>Gradient Lexicase</h3>
   <p>Integrates lexicase selection into deep learning by simultaneously performing gradient descent on several copies of the model, each trained with respect to a different subset of the training data, and then performing lexicase selection to determine which model to carry forward to the next learning epoch.</p>
 
   <h2>Time Complexity</h2>
   The time complexity of ordinary lexicase selection is O(n × m) where n is population size and m is number of training cases.
   However, the empirically observed runtimes are generally significantly better than this basic complexity analysis
-  would lead one to expect. Explanations for this better-than-expected performance are explored in <a href="https://arxiv.org/abs/2204.06461">this paper</a>. DALex and Plexicase provide otherhigh performance options.
+  would lead one to expect. Explanations for this better-than-expected performance are explored in <a href="https://arxiv.org/abs/2204.06461">this paper</a>. DALex and Plexicase provide other high performance options.</p>
   
   <h2>References</h2>
   <ul>
@@ -101,6 +101,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

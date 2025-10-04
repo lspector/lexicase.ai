@@ -85,9 +85,14 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
 
   <h3>Plexicase (Probabilistic Lexicase)</h3>
   <p>Approximates the selection probabilities for each individual under lexicase selection, and then samples from that distributuion instead of performing lexicase selection's repeated filtering steps.
-    Behaves similarly to lexicase selection but is significantly more efficient. Also allows for adjustment of the kurtosis of the distribution, which can be beneficial in some problem environments.
+    Behaves similarly to lexicase selection but is significantly more efficient. Also allows for adjustment of the kurtosis of the distribution, which can be beneficial in some problem environments.</p>
+  
   <!--- <p>Plexicase introduces probabilistic elements to lexicase selection, allowing for more flexible selection behavior while maintaining the core principles of case-by-case evaluation. This variant can help balance exploration and exploitation in the selection process.</p> --->
 
+  <h3>Gradient Lexicase Selection</h3>
+  <p>Integrates lexicase selection into deep learning by simultaneously performing gradient descent on several copies of the model, each trained with respect to a different subset of the training data, and then performing lexicase selection to determine which model to carry forward to the next learning epoch.</p>
+
+    
   <h2>Parameters</h2>
   <table>
     <thead>
@@ -178,6 +183,7 @@ training_cases = [
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

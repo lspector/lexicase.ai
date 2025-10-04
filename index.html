@@ -61,7 +61,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <p><em>Note: In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</em></p>
 
   <h3>Down-sampled Lexicase</h3>
-  <p>Uses a subset of training cases for each selection event to reduce computational cost.</p>
+  <p>Uses a subset of training cases for each selection event to reduce computational cost, often allowing better solutions to be found when the savings are used to run the learning/evolutionary algorithm for additional epochs/generations. Random downsampling often works well, but informed downsampling can work better.</p>
 
   <h3>DALex (Diversely Aggregated Lexicase)</h3>
   <p>In DALex, training cases <i><b></b>are</b></i> aggregated, but only after randomized weighting. When weight differences are large, DALex's behavior approaches that of ordinary lexicase selection. This permits significant efficiency improvements and provides a "particularity pressure" hyperparameter that can be adjusted for better performance in some environments.</p> 
@@ -87,14 +87,15 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <h2>References</h2>
   <ul>
     <li>Spector, L. (2012). Assessment of Problem Modality by Differential Performance of Lexicase Selection in Genetic Programming: A Preliminary Report. In <i>Companion Publication of the 2012 Genetic and Evolutionary Computation Conference, GECCO’12 Companion</i>, pp. 401-408.</li>
-    <li>Helmuth, T., L. Spector, and J. Matheson. (2014). Solving Uncompromising Problems with Lexicase Selection. In <i>IEEE Transactions on Evolutionary Computation</i>, vol. 19, no. 5, pp. 630-643.</li>
-    <li>La Cava, W., L. Spector, and K. Danai (2016). Epsilon-lexicase selection for regression. <i>GECCO '16: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 741-748.</li>
-    <li>Hernandez, J. G., A. Lalejini, E. Dolson, and C. Ofria (2019). Random subsampling improves performance in lexicase selection. <i>GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference Companion</i>, pp. 2028-2031.</li>
+    <li>Helmuth, T., L. Spector, & Matheson, J. (2014). Solving Uncompromising Problems with Lexicase Selection. In <i>IEEE Transactions on Evolutionary Computation</i>, vol. 19, no. 5, pp. 630-643.</li>
+    <li>La Cava, W., L. Spector, & Danai, K. (2016). Epsilon-lexicase selection for regression. <i>GECCO '16: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 741-748.</li>
+    <li>Hernandez, J. G., A. Lalejini, E. Dolson, & Ofria, C. (2019). Random subsampling improves performance in lexicase selection. <i>GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference Companion</i>, pp. 2028-2031.</li>
     <li>Aenugu, S., & Spector, L. (2019). Lexicase selection in learning classifier systems. In <i>GECCO '19: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 356–364.</li>
     <li>Ding, L., & Spector, L. (2022). Optimizing Neural Networks with Gradient Lexicase Selection. In The Tenth International Conference on Learning Representations, ICLR 2022.</li>
     <li>Helmuth, T., Lengler, J., & La Cava, W. (2022). Population Diversity Leads to Short Running Times of Lexicase Selection. In <i>Parallel Problem Solving from Nature – PPSN XVII: 17th International Conference, PPSN 2022</i>, pp. 485-498.</li>
     <li>Ding, L., Pantridge, E., & Spector, L. (2023). Probabilistic lexicase selection. In <i>GECCO '23: Proceedings of the Genetic and Evolutionary Computation Conference</i>, pp. 1073-1081.</li>
     <li>Ni, A., Ding, L., & Spector, L. (2024). Dalex: Lexicase-like selection via diverse aggregation. In <i>European Conference on Genetic Programming</i> (EuroGP, part of EvoStar), pp. 90-107.</li>
+    <li>Boldi, R., Briesch, M., Sobania, D., Lalejini, A., Helmuth, T., Rothlauf, F., Ofria, C., & Spector, L. (2024). Informed Down-Sampled Lexicase Selection: Identifying Productive Training Cases for Efficient Problem Solving. In <i>Evolutionary Computing</i> 32 (4): 307–337.</li>
     <li>Bahlous-Boldi, R., Ding, L., Spector, L., & Niekum, S. (2025). Pareto Optimal Learning from Preferences with Hidden Context. In <i>Reinforcement Learning Conference, RLC 2025</i>.</li>
     <li><em>See also: <a href="https://scholar.google.com/scholar?hl=en&q=lexicase+selection">Lexicase Selection on Google Scholar</a>.</em></li>
   </ul>
@@ -109,6 +110,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

@@ -58,7 +58,7 @@ layout: default
 threshold = best_performance + epsilon
 candidates = filter_by_threshold(candidates, training_case, threshold)</code></pre>
 
-  <p><em>Note: In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation.</em></p>
+  <p>In the recommended form of epsilon lexicase selection, we keep not only the candidates with exactly the best performance of any individual currently in the set (on the given case), but also any other candidates with performance that differs from the best performance (on that case) by less than epsilon, where epsilon is the median absolute difference between errors on the case and the median error for the case, computed over the entire population, once per generation. This is sometimes called MAD epsilon lexicase selection, for Median Absolute Deviation (from the median).</p>
 
   <h3>Down-sampled Lexicase</h3>
   <p>Uses a subset of training cases for each selection event to reduce computational cost, often allowing better solutions to be found when the savings are used to run the learning/evolutionary algorithm for additional epochs/generations. Random downsampling often works well, but informed downsampling can work better.</p>
@@ -115,6 +115,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 

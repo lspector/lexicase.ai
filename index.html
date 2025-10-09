@@ -5,22 +5,22 @@ layout: default
 <div class="home">
   <h1>Lexicase Selection</h1>
 
-  <p>Lexicase selection is a selection method first developed as a parent selection method for evolutionary algorithms, specifically genetic programming. It has since been applied to several other forms of evolutionary computing and to other machine learning algorithms. Unlike traditional selection methods that aggregate multiple selection criteria (often errors) across all training cases, lexicase selection separately considers performance of individual training cases.</p>
+  <p>Lexicase selection is a selection method first developed for genetic programming. It has since been applied to other machine learning algorithms. Unlike traditional selection methods that aggregate multiple selection criteria across training cases, lexicase selection separately considers performance of individual training cases. It considers them in different random orders (and therefore priorities) for each selection event.</p>
 
   <p><strong>Python Package Available:</strong> <a href="https://pypi.org/project/lexicase/">Install from PyPI</a></p>
 
   <h2>How It Works</h2>
-  <p><em>The following describes ordinary lexicase selection method. See <a href="#variants">variants</a> for modified versions.</em></p>
+  <p><em>The following describes the ordinary lexicase selection method. See <a href="#variants">variants</a> for other versions.</em></p>
   <ol>
     <li><strong>Random Ordering</strong>: For each selection event, the training cases are randomly shuffled</li>
     <li><strong>Sequential Filtering</strong>: Candidates are filtered based on performance on each training case in order</li>
     <li><strong>Best Performance</strong>: Only individuals with the best performance on the current training case advance</li>
-    <li><strong>Final Selection</strong>: The process continues until one individual remains or all training cases are considered</li>
+    <li><strong>Final Selection</strong>: The process continues until one individual remains or all training cases are considered, in which case a radom remaining individual is selected</li>
   </ol>
 
   <h2>Advantages</h2>
   <ul>
-    <li><strong>Avoids averaging traps</strong>: Non-aggregating selection prevents getting stuck in local optima caused by balancing mediocre performance across training cases, enabling richer exploration of the solution space</li>
+    <li><strong>Avoids averaging traps</strong>: Non-aggregating selection prevents search from getting stuck in local optima caused by balancing mediocre performance across training cases, enabling richer exploration of the solution space</li>
     <li><strong>Preserves diversity and specialists</strong>: Random ordering of training cases combined with non-aggregation allows specialized solutions to survive and reproduce based on excellence in specific areas, maintaining population diversity</li>
     <li><strong>Handles multidimensional problems naturally</strong>: Eliminates the need to weight competing objectives or collapse multiple criteria into a single fitness score</li>
   </ul>
@@ -115,6 +115,7 @@ candidates = filter_by_threshold(candidates, training_case, threshold)</code></p
   <hr>
   <p><em>Last updated: October 2025</em></p>
 </div>
+
 
 
 
